@@ -11,6 +11,15 @@
 <body>
     <div class="container mt-5">
     <h1>All Posts</h1>
+    @foreach($posts as $post)
+    <div class="card">
+    <div class="card-body">
+    <h2>
+    <a href="#">{{$post->title}}</a>
+    </h2>
+    </div>
+    </div>
+    @endforeach
     </div>
 </body>
 </html>
