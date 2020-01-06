@@ -14,6 +14,8 @@
 <div class="container">
 @yield('content')
 </div>
- 
+ <div>
+ All Rights reserved {{date('Y')}}.
+ </div>
 </body>
 </html> 

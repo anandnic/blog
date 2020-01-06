@@ -7,8 +7,15 @@
     <div class="card-body">
     <h2>
     <a href="{{route('posts.show',$post->id)}}">{{$post->title}}</a>
+    <a href="{{route('posts.edit',$post->id)}}">EDIT</a>
+    <form action="{{route('posts.destroy',$post->id)}}" method="post">
+    @csrf
+    @method('delete')
+    <button type="submit">Delete</button>
+    </form>
     </h2>
     </div>
     </div>
     @endforeach
+    {{$posts->links()}}
     @endsection

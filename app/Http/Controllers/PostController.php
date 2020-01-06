@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {   
-        $posts=Post::all();
+        // $posts=Post::all();
+        // $posts=Post::orderBy('id','desc')->get();
+        $posts=Post::orderBy('id','desc')->paginate(10);
         return view('posts.index',['posts'=>$posts]);
     }
 
@@ -26,6 +28,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -37,6 +40,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        // echo $request->title;
+        $this->validate($request,[
+            'title'=>'required |min:3',
+            'content'=>'required',
+        ]);
+        //  to check is validation is right -> return 'assam';
+        Post::create([
+         
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -83,5 +98,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->delete();
+        return redirect(route('posts.index'));
     }
 }
