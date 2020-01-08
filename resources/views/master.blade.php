@@ -10,6 +10,14 @@
 <div class="bg-info text-white p-5">
 <a href="{{route('posts.index')}}" class="btn btn-secondary">Home</a>
 <a href="{{route('posts.create')}}" class="btn btn-secondary">Create Post</a>
+@auth
+<form action="{{route('logout')}}" method="post">
+@csrf 
+<button>{{auth()->user()->name}} Logout</button>
+</form>
+@else
+<a href="{{route('login')}}">Login</a>
+@endauth
 </div>
 <div class="container">
 @yield('content')

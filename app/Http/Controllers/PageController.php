@@ -7,6 +7,7 @@ use App\Page;
 class PageController extends Controller
 {
     //
+
     public function index(){
         
         $fruits=Page::fruits();
