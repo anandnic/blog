@@ -8,7 +8,7 @@
     <h2>
     <a href="{{route('posts.show',$post->id)}}">{{$post->title}}</a>
     <a href="{{route('posts.edit',$post->id)}}">EDIT</a>
-    <form action="{{route('posts.destroy',$post->id)}}" method="post">
+    <form onsubmit="return confirm('Are you sure you want to delete')" action="{{route('posts.destroy',$post->id)}}" method="post">
     @csrf
     @method('delete')
     <button type="submit">Delete</button>
